@@ -1,66 +1,76 @@
-<script>
-    const choices = ['rock', 'paper', 'scissors'];
-    let playerWin = "Player Wins!";
-    let computerWin = "Computer Wins!";
-    let draw = "Is a draw";
-    let invalidOption = "That's an invalid option, computer wins..."; 
-    let computerPlay = function() {
-        let randomIndex = Math.round(Math.random() * 2);
-        let computerChoice = choices[randomIndex];
-        return computerChoice;
-    }
-    let decideWinner = function(computerChoice, playerChoice) {
-        playerChoice = playerChoice.trim().toLowerCase();
-        if (computerChoice == 'rock' && playerChoice == 'scissors') {
-            return computerWin;
-        } else if (computerChoice == 'rock' && playerChoice == 'paper') {
-            return playerWin;
-        } else if (computerChoice == 'paper' && playerChoice == 'scissors') {
-            return playerWin;
-        } else if (computerChoice == 'paper' && playerChoice == 'rock') {
-            return computerWin;
-        } else if (computerChoice == 'scissors' && playerChoice == 'paper') {
-            return computerWin;
-        } else if (computerChoice == 'scissors' && playerChoice == 'rock') {
-            return playerWin;
-        } else if (computerChoice == playerChoice) {
-            return draw;
-        } else {
-            return invalidOption;
-        }
-    }
-    let game = function() {
-        let playerScore = 0;
-        let computerScore = 0;
-        let playerChoice, computerChoice, winner;
-        console.log("Welcome to this Rock Paper Scissors console game!");
-        console.log("This is a 5 round game! Lets see if you can beat the computer!");
-        for (let i = 0; i < 5; i++) {
-            console.log("Rock Paper Scissors, 1, 2, 3!");
-            playerChoice = prompt("Choose! Fast! Rock, Paper or Scissors!?");
-            computerChoice = computerPlay();
-            console.log(`Computer: ${computerChoice}`);
-            console.log(`Player: ${playerChoice}`);
-            winner = decideWinner(computerChoice, playerChoice);
-            switch (winner) {
-                case computerWin:
-                    computerScore++;
-                    break;
-                case playerWin:
-                    playerScore++;
-                    break;
-                case invalidOption:
-                    computerScore++;
-                    break;
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="utf-8">
+        <title>Rock Paper Scissors Console Game</title>
+    </head>
+    <body>
+        <h1>Don't look at me! Go to the developer tools console!</h1>
+        <script>
+            const choices = ['rock', 'paper', 'scissors'];
+            let playerWin = "Player Wins!";
+            let computerWin = "Computer Wins!";
+            let draw = "Is a draw";
+            let invalidOption = "That's an invalid option, computer wins..."; 
+            let computerPlay = function() {
+                let randomIndex = Math.round(Math.random() * 2);
+                let computerChoice = choices[randomIndex];
+                return computerChoice;
             }
-            console.log(winner);
-        }
-        if (playerScore > computerScore) {
-            console.log("Player wins the game!");
-        } else if (playerScore < computerScore) {
-            console.log("Computer wins the game!");
-        } else {
-            console.log("The game ended up in a draw!");
-        }
-    }
-</script>
+            let decideWinner = function(computerChoice, playerChoice) {
+                playerChoice = playerChoice.trim().toLowerCase();
+                if (computerChoice == 'rock' && playerChoice == 'scissors') {
+                    return computerWin;
+                } else if (computerChoice == 'rock' && playerChoice == 'paper') {
+                    return playerWin;
+                } else if (computerChoice == 'paper' && playerChoice == 'scissors') {
+                    return playerWin;
+                } else if (computerChoice == 'paper' && playerChoice == 'rock') {
+                    return computerWin;
+                } else if (computerChoice == 'scissors' && playerChoice == 'paper') {
+                    return computerWin;
+                } else if (computerChoice == 'scissors' && playerChoice == 'rock') {
+                    return playerWin;
+                } else if (computerChoice == playerChoice) {
+                    return draw;
+                } else {
+                    return invalidOption;
+                }
+            }
+            let game = function() {
+                let playerScore = 0;
+                let computerScore = 0;
+                let playerChoice, computerChoice, winner;
+                console.log("Welcome to this Rock Paper Scissors console game!");
+                console.log("This is a 5 round game! Lets see if you can beat the computer!");
+                for (let i = 0; i < 5; i++) {
+                    console.log("Rock Paper Scissors, 1, 2, 3!");
+                    playerChoice = prompt("Choose! Fast! Rock, Paper or Scissors!?");
+                    computerChoice = computerPlay();
+                    console.log(`Computer: ${computerChoice}`);
+                    console.log(`Player: ${playerChoice}`);
+                    winner = decideWinner(computerChoice, playerChoice);
+                    switch (winner) {
+                        case computerWin:
+                            computerScore++;
+                            break;
+                        case playerWin:
+                            playerScore++;
+                            break;
+                        case invalidOption:
+                            computerScore++;
+                            break;
+                    }
+                    console.log(winner);
+                }
+                if (playerScore > computerScore) {
+                    console.log("Player wins the game!");
+                } else if (playerScore < computerScore) {
+                    console.log("Computer wins the game!");
+                } else {
+                    console.log("The game ended up in a draw!");
+                }
+            }
+        </script>
+    </body>
+</html>
