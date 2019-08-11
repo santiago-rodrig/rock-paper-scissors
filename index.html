@@ -11,7 +11,9 @@
             let playerWin = "Player Wins!";
             let computerWin = "Computer Wins!";
             let draw = "Is a draw";
-            let invalidOption = "That's an invalid option, computer wins..."; 
+            let invalidOption = "That's an invalid option, computer wins...";
+            let playAgain = false;
+            let playerPlayAgain;
             let computerPlay = function() {
                 let randomIndex = Math.round(Math.random() * 2);
                 let computerChoice = choices[randomIndex];
@@ -71,7 +73,21 @@
                     console.log("The game ended up in a draw!");
                 }
             }
-            game();
+            do {
+                game();
+                playerPlayAgain = prompt("Wanna play again?").trim().toLowerCase();
+                switch (playerPlayAgain) {
+                    case 'yes':
+                        playAgain = true;
+                        break;
+                    case 'no':
+                        playAgain = false;
+                        break;
+                    default:
+                        playAgain = false;
+                        break;
+                }
+            } while (playAgain);
         </script>
     </body>
 </html>
